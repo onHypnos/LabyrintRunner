@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 namespace Fabrics
 {
-    public class HeroFabric : BaseMonoBehaviour
+    public class HeroFabric
     {
         public struct Ctx
         {
@@ -27,7 +27,7 @@ namespace Fabrics
 
         public PlayerCharacter SpawnHeroCharacter()
         {
-            PlayerCharacter hero = Instantiate(_ctx.AssetProvider.GetPlayerCharacterExample(id: 0));
+            PlayerCharacter hero = Object.Instantiate(_ctx.AssetProvider.GetPlayerCharacterExample(id: 0));
             hero.SetCtx(new PlayerCharacter.Ctx
             {
                 UiTouchInput = _ctx.UiTouchInput,

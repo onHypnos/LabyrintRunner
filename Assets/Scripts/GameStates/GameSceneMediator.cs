@@ -14,26 +14,29 @@ namespace GameStates
 {
     public class GameSceneMediator : BaseMonoBehaviour, IExecutablePerFrame
     {
-        [SerializeField] private HeroFabric _heroFabric;
-        [SerializeField] private EnemyFabric _enemyFabric;
         [SerializeField] private GameSceneUIMediator _gameSceneUIMediator;
         [SerializeField] private LevelEnvironment _levelEnvironment;
         
+        private HeroFabric _heroFabric = new();
+        private EnemyFabric _enemyFabric = new();
+
         private ReactiveEvent _onGamePause = new();
         private ReactiveEvent _onGameResumed = new();
         private ReactiveEvent _onGameStart = new();
         private ReactiveEvent _onGameLose = new();
         private ReactiveEvent _onGameWin = new();
+        
         private ReactiveProperty<float> _timeRemaining = new();
         private ReactiveProperty<int> _triesAmount = new();
         private ReactiveProperty<Vector3> _uiTouchInput = new();
         private ReactiveProperty<PlayerCharacter> _currentPlayer = new();
         private bool _countTimer = false; //todo refactor говнокод
+        
         public struct Ctx
         {
             public CompositeDisposable Disposables;
             public AssetProvider AssetProvider;
-            public ReactiveEvent EndScene;  //todo for nextScenes
+            public ReactiveEvent EndScene;  
             public SaveLoadService SaveLoadService;
             public UpdateRunner UpdateRunner;
             public ConfigProvider ConfigProvider;
@@ -78,7 +81,6 @@ namespace GameStates
                 OnLoseGame = _onGameLose,
                 OnWinGame = _onGameWin,
                 UiTouchInput = _uiTouchInput,
-
             });
 
             _levelEnvironment.SetCtx(new LevelEnvironment.Ctx
@@ -91,7 +93,6 @@ namespace GameStates
                 TriesAmount = _triesAmount,
                 PlayerReachWinEncounter = _onGameWin,
                 CurrentPlayer = _currentPlayer,
-
             });
 
             _triesAmount.SetValueAndForceNotify(0);

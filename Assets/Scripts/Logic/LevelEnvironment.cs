@@ -22,8 +22,10 @@ namespace Logic
         {
             public EnemyFabric EnemyFabric;
             public HeroFabric HeroFabric;
+            
             public ReactiveEvent<ReactiveEvent<SaveData.PlayerData>> OnSavePlayerHandler;
             public ReactiveEvent<ReactiveEvent<SaveData.LevelData>> OnSaveLevelHandler;
+            
             public ReactiveProperty<float> TimeRemaining;
             public ReactiveProperty<int> TriesAmount;
             public ReactiveEvent PlayerReachWinEncounter;

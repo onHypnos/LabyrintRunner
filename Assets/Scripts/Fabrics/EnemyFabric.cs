@@ -2,14 +2,12 @@
 using Characters.Player;
 using Extensions.Reactive;
 using Services;
-using Services.SaveLoad;
-using Tools.Extensions;
 using UniRx;
 using UnityEngine;
 
 namespace Fabrics
 {
-    public class EnemyFabric : BaseMonoBehaviour
+    public class EnemyFabric
     {
         public struct Ctx
         {
@@ -29,7 +27,7 @@ namespace Fabrics
 
         public EnemyCharacter SpawnEnemy(int typeId, int spawnerID, Vector3 spawnPosition)
         {
-            var enemy = Instantiate(_ctx.AssetProvider.GetEnemyExample(typeId), spawnPosition, Quaternion.identity);
+            var enemy = Object.Instantiate(_ctx.AssetProvider.GetEnemyExample(typeId), spawnPosition, Quaternion.identity);
             enemy.SetCtx(new EnemyCharacter.Ctx
             {
                 OnEnemyReachTarget = _ctx.OnLoseGame,

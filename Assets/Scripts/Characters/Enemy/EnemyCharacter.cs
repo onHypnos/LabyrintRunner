@@ -96,7 +96,7 @@ namespace Characters.Enemy
             _currentState = _states[typeof(T)];
             _currentState.Enter();
         }
-        
+
         public void Execute()
         {
             _currentState.Execute();

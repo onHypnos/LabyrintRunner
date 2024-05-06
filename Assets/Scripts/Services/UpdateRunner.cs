@@ -18,14 +18,14 @@ namespace Services
         public void Subscribe<T>(T instance) where T : IExecutable
         {
             if (instance is IFixedExecutable fixedUpdatable) _fixedUpdateEvent += fixedUpdatable.FixedExecute;
-            if (instance is ILateExecutable lateUpdatable) _lateUpdateEvent += lateUpdatable.LateExecute;//.AddTo(disposable);
-            if (instance is IExecutablePerFrame updatable) _updateEvent += updatable.Execute;//.AddTo(disposable);
+            if (instance is ILateExecutable lateUpdatable) _lateUpdateEvent += lateUpdatable.LateExecute;
+            if (instance is IExecutablePerFrame updatable) _updateEvent += updatable.Execute;
         }
 
         public void Unsubscribe<T>(T instance) where T : IExecutable
         {
             if (instance is IFixedExecutable fixedUpdatable) _fixedUpdateEvent -= fixedUpdatable.FixedExecute;
-            if (instance is ILateExecutable lateUpdatable) _lateUpdateEvent -= lateUpdatable.LateExecute;//.AddTo(disposable);
+            if (instance is ILateExecutable lateUpdatable) _lateUpdateEvent -= lateUpdatable.LateExecute;
             if (instance is IExecutablePerFrame updatable) _updateEvent -= updatable.Execute;
         }
         

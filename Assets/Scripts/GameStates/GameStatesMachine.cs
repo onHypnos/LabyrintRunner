@@ -26,7 +26,7 @@ namespace GameStates
             _ctx = ctx;
 
             ReactiveEvent MoveToNextScene = new ReactiveEvent();
-            MoveToNextScene.SubscribeWithSkip(ChangeState<GameSceneState>);//while only one gamescene
+            MoveToNextScene.SubscribeWithSkip(ChangeState<GameSceneState>);  //while only one gamescene
             
             _gameStates.Add(typeof(GameSceneState), new GameSceneState(new GameSceneState.Ctx
             {
